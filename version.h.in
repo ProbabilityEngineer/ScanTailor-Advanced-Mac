@@ -3,8 +3,8 @@
 #ifndef SCANTAILOR_VERSION_H_
 #define SCANTAILOR_VERSION_H_
 
-#define VERSION "1.2.1"
-#define VERSION_QUAD ""  // Must be "x.x.x.x" or an empty string.
+#define VERSION "1.2.1-mac.1"
+#define VERSION_QUAD "1.2.1.1"  // Upstream 1.2.1, Mac-port revision 1.
 #define PROJECT_VERSION 4
 
 #endif

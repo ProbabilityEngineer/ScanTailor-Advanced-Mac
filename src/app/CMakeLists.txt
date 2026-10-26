@@ -95,8 +95,8 @@ if (APPLE)
       MACOSX_BUNDLE_GUI_IDENTIFIER "org.scantailor.Advanced"
       MACOSX_BUNDLE_BUNDLE_NAME "ScanTailor Advanced for Mac"
       MACOSX_BUNDLE_ICON_FILE "scantailor-advanced.icns"
-      MACOSX_BUNDLE_SHORT_VERSION_STRING "${VERSION}"
-      MACOSX_BUNDLE_BUNDLE_VERSION "${VERSION}")
+      MACOSX_BUNDLE_SHORT_VERSION_STRING "1.2.1"
+      MACOSX_BUNDLE_BUNDLE_VERSION "1.2.1.1")
 endif()
 
 install(TARGETS ${target_name}
@@ -122,6 +122,11 @@ if (Qt6_FOUND AND APPLE)
             -always-overwrite
             -libpath=/opt/homebrew/opt/webp/lib
             -libpath=/opt/homebrew/opt/brotli/lib
+    # Homebrew's Qt installation also exposes optional plugins whose frameworks
+    # macdeployqt cannot resolve. This raster-image Widgets app uses neither.
+    COMMAND "${CMAKE_COMMAND}" -E rm -f
+            "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/PlugIns/imageformats/libqpdf.dylib"
+            "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/PlugIns/platforminputcontexts/libqtvirtualkeyboardplugin.dylib"
     COMMAND /usr/bin/install_name_tool -change @rpath/libsharpyuv.0.dylib @loader_path/libsharpyuv.0.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libwebp.7.dylib"
     COMMAND /usr/bin/install_name_tool -change @rpath/libsharpyuv.0.dylib @loader_path/libsharpyuv.0.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libwebpdemux.2.dylib"
     COMMAND /usr/bin/install_name_tool -change @rpath/libsharpyuv.0.dylib @loader_path/libsharpyuv.0.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libwebpmux.3.dylib"
