@@ -1724,7 +1724,11 @@ void MainWindow::updateWindowTitle() {
     projectName = QFileInfo(m_projectFile).completeBaseName();
   }
   const QString version(QString::fromUtf8(VERSION));
+#ifdef Q_OS_MACOS
+  setWindowTitle(tr("%1 - ScanTailor Advanced for Mac").arg(projectName));
+#else
   setWindowTitle(tr("%2 - ScanTailor Advanced [%1bit]").arg(sizeof(void*) * 8).arg(projectName));
+#endif
 }
 
 /**

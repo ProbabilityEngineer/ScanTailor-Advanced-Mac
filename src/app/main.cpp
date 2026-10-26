@@ -42,6 +42,9 @@ int main(int argc, char* argv[]) {
 
   // This information is used by QSettings.
   Application::setApplicationName(APPLICATION_NAME);
+#ifdef Q_OS_MACOS
+  Application::setApplicationDisplayName(QStringLiteral("ScanTailor Advanced for Mac"));
+#endif
   Application::setOrganizationName(ORGANIZATION_NAME);
 
   QSettings::setDefaultFormat(QSettings::IniFormat);

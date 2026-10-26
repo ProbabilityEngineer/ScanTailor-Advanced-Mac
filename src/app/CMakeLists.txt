@@ -91,8 +91,9 @@ if (APPLE)
   set_target_properties(
       ${target_name}
       PROPERTIES
+      OUTPUT_NAME "ScanTailor Advanced for Mac"
       MACOSX_BUNDLE_GUI_IDENTIFIER "org.scantailor.Advanced"
-      MACOSX_BUNDLE_BUNDLE_NAME "ScanTailor Advanced"
+      MACOSX_BUNDLE_BUNDLE_NAME "ScanTailor Advanced for Mac"
       MACOSX_BUNDLE_ICON_FILE "scantailor-advanced.icns"
       MACOSX_BUNDLE_SHORT_VERSION_STRING "${VERSION}"
       MACOSX_BUNDLE_BUNDLE_VERSION "${VERSION}")
@@ -128,7 +129,8 @@ if (Qt6_FOUND AND APPLE)
     COMMAND /usr/bin/install_name_tool -change @rpath/libwebp.7.dylib @loader_path/libwebp.7.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libwebpmux.3.dylib"
     COMMAND /usr/bin/install_name_tool -change @rpath/libbrotlicommon.1.dylib @loader_path/libbrotlicommon.1.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libbrotlidec.1.dylib"
     COMMAND codesign --force --deep --sign - "$<TARGET_BUNDLE_DIR:${target_name}>"
-    COMMENT "Deploying and ad-hoc signing the macOS app bundle")
+    COMMENT "Deploying and ad-hoc signing the macOS app bundle"
+    VERBATIM)
 endif()
 
 translation_sources(${target_name} ${gui_only_sources} ${gui_only_ui_files})
