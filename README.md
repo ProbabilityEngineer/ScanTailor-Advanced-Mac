@@ -7,7 +7,7 @@ post-processing tool for scanned pages.
 This fork targets **Apple Silicon (arm64) only**. It runs natively using Qt,
 without Wine or Rosetta. It is not an official upstream macOS release.
 
-<!-- Add a screenshot of the native Mac app once a window capture is available. -->
+![ScanTailor Advanced for Mac showing the Deskew controls and a synthetic scanned page](docs/images/scantailor-mac.png)
 
 ## What it does
 
