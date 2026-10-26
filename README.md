@@ -9,6 +9,17 @@ without Wine or Rosetta. It is not an official upstream macOS release.
 
 ![ScanTailor Advanced for Mac showing the Deskew controls and a synthetic scanned page](docs/images/scantailor-mac.png)
 
+## Download
+
+Download **[1.2.1-mac.1 for Apple Silicon](https://github.com/ProbabilityEngineer/ScanTailor-Advanced-Mac/releases/tag/v1.2.1-mac.1)**.
+This is upstream version 1.2.1 with Mac-port revision 1.
+
+**This binary requires macOS 27.0 or later and an Apple Silicon Mac.**
+It is Developer ID signed, Apple-notarized, and stapled. Unzip the archive,
+move **ScanTailor Advanced for Mac.app** to Applications, and open it normally.
+Homebrew is not required to run the release. A SHA-256 checksum is included
+with the release assets.
+
 ## What it does
 
 Split scanned spreads into pages, deskew images, select content, adjust margins,
@@ -64,9 +75,11 @@ The build deploys Qt frameworks and plugins into the app and applies an ad-hoc
 signature. Copy the `.app` to Applications if desired. Keep the app bundle
 intact; do not move just the executable out of it.
 
-This is currently a source-build port, not a Developer ID signed or notarized
-release. A successful local launch does not establish compatibility with every
-macOS version. The minimum supported macOS version has not yet been established.
+Local builds use ad-hoc signing; the published release is separately Developer ID
+signed and notarized. The current release binary requires macOS 27.0 or later
+because of its toolchain and bundled dependencies. Building for earlier macOS
+versions requires compatible dependencies as well as a suitable deployment
+target; earlier versions have not been validated.
 
 ### Rebuilding after a Qt update
 
