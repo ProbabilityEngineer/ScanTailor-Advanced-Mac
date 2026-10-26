@@ -2,9 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [master, main]
+    branches: [macos]
   pull_request:
-    branches: [master, main]
+    branches: [macos]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)

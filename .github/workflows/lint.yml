@@ -3,9 +3,9 @@ name: Lint
 
 on:
   push:
-    branches: [master, main]
+    branches: [macos]
   pull_request:
-    branches: [master, main]
+    branches: [macos]
 
 jobs:
   clang-format:

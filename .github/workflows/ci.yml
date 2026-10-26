@@ -1,11 +1,11 @@
-# CI: build on push and PR to main/master
+# CI: build on push and PR to the Mac-port branch
 name: CI
 
 on:
   push:
-    branches: [master, main]
+    branches: [macos]
   pull_request:
-    branches: [master, main]
+    branches: [macos]
 
 jobs:
   build-linux:
