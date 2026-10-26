@@ -85,11 +85,15 @@ target_include_directories(
     PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}"
     "$<TARGET_PROPERTY:TIFF::TIFF,INTERFACE_INCLUDE_DIRECTORIES>")
 if (APPLE)
+  set(app_icon "${SCANTAILOR_RESOURCES_DIR}/macos/scantailor-advanced.icns")
+  set_source_files_properties("${app_icon}" PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+  target_sources(${target_name} PRIVATE "${app_icon}")
   set_target_properties(
       ${target_name}
       PROPERTIES
       MACOSX_BUNDLE_GUI_IDENTIFIER "org.scantailor.Advanced"
       MACOSX_BUNDLE_BUNDLE_NAME "ScanTailor Advanced"
+      MACOSX_BUNDLE_ICON_FILE "scantailor-advanced.icns"
       MACOSX_BUNDLE_SHORT_VERSION_STRING "${VERSION}"
       MACOSX_BUNDLE_BUNDLE_VERSION "${VERSION}")
 endif()
@@ -114,6 +118,7 @@ if (Qt6_FOUND AND APPLE)
     TARGET ${target_name}
     POST_BUILD
     COMMAND "${QT_BINDIR}/macdeployqt" "$<TARGET_BUNDLE_DIR:${target_name}>"
+            -always-overwrite
             -libpath=/opt/homebrew/opt/webp/lib
             -libpath=/opt/homebrew/opt/brotli/lib
     COMMAND /usr/bin/install_name_tool -change @rpath/libsharpyuv.0.dylib @loader_path/libsharpyuv.0.dylib "$<TARGET_BUNDLE_DIR:${target_name}>/Contents/Frameworks/libwebp.7.dylib"
